@@ -26,3 +26,29 @@ client-side navigation, and prefetching (in production).
 
 You create routes as files under pages and use the built-in Link component.
 No routing libraries are required.
+
+
+
+# Assets, Metadata and, CSS
+
+    Next.js can serve static assets, like images, under the top-level public directory.
+    Files inside public can be referenced from the root of the application similar to pages.
+
+    The public directory is also useful for robots.txt, Google Site Verification, and any
+    other static assets. Check out the documentation for Static File Serving to learn more.
+
+
+### Adding third party javascript
+```js
+
+<Script
+    src="https://connect.facebook.net/en_US/sdk.js"
+    strategy="lazyOnload"
+    onLoad={() =>
+        console.log(`script loaded correctly, windowhas been populated`)
+    }
+    />
+```
+
+Added below the Head component. Notice the "H" and not "h".
+This was just for demo purpose and has been removed and script tag commented out.
