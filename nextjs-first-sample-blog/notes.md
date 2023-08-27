@@ -64,3 +64,29 @@ to be loaded by every page, Next.js has support for that as well.
 ---
     In Next.js, you can add global CSS files by importing them from pages/_app.js.
     You cannot import global CSS anywhere else because global CSS affects all elements on the page.
+
+
+
+# Pre-rendering and Data Fetching
+In lib/posts.js, we’ve implemented getSortedPostsData which fetches data from the file system.
+But you can fetch the data from other sources, like an external API endpoint, and it’ll work just fine:
+
+```Js
+export async function getSortedPostsData() {
+  // Instead of the file system,
+  // fetch post data from an external API endpoint
+  const res = await fetch('..');
+  return res.json();
+  
+}
+```
+1. getStaticProps only runs on the ***server-side***
+
+        It will never run on the client-side. It won’t even be included in the JS bundle for the browser. That means you can 
+        write code such as direct database queries without them being sent to browsers.
+2. By returning allPostsData inside the props object in getStaticProps, the blog posts will be passed to the Home component as a prop
+
+3. getStaticProps in action
+
+
+![getStaticProps in action](public/images/index-page.png)
